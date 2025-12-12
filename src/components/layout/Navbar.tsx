@@ -31,7 +31,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <div className={`flex h-10 w-10 items-center justify-center rounded-lg} backdrop-blur-sm`}>
-              <img src="src/assets/logo.png" alt="MyKITA Logo" className="h-10 w-10 absolute" />
+              <img src="/logo.png" alt="MyKITA Logo" className="h-10 w-10" />
             </div>
             <div className="hidden sm:block">
               <h1 className={`text-lg font-bold ${mode === 'admin' ? 'text-white' : 'text-primary-foreground'}`}>MyKITA</h1>

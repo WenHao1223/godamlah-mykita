@@ -1,7 +1,7 @@
 # MyGovHub
 
 <div align="center" style="border: none;">
-<img src="src/assets/logo.png" alt="MyKITA Logo" height="150"/>
+<img src="public/logo.png" alt="MyKITA Logo" height="150"/>
 </div>
 
 ## Project Overview
@@ -53,5 +53,5 @@ Automated supply needs updates based on victims’ profiles (age, gender, medica
 ## System Architecture
 
 <div align="center" style="border: none;">
-<img src="src/assets/system-architecture.png" alt="MyKITA System Architecture"/>
+<img src="public/system-architecture.png" alt="MyKITA System Architecture"/>
 </div>
