@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,9 +13,16 @@ const Navbar = () => {
     return (localStorage.getItem("mykita.mode") as 'admin' | 'victim') ?? 'admin';
   });
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     try {
       localStorage.setItem("mykita.mode", mode);
+      if (mode === 'admin' && window.location.pathname === '/victim-portal') {
+        navigate('/');
+      } else if (mode === 'victim' && window.location.pathname !== '/victim-portal') {
+        navigate('/victim-portal');
+      }
     } catch (e) {
       // ignore storage errors
     }
