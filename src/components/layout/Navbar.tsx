@@ -1,5 +1,5 @@
 import { NavLink } from "@/components/NavLink";
-import { Shield, Users, MapPin, UserCircle, Menu, X } from "lucide-react";
+import { Users, MapPin, UserCircle, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -30,8 +30,8 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${mode === 'admin' ? 'bg-white/10' : 'bg-primary-foreground/10'} backdrop-blur-sm`}>
-              <Shield className={`h-6 w-6 ${mode === 'admin' ? 'text-white' : 'text-primary-foreground'}`} />
+            <div className={`flex h-10 w-10 items-center justify-center rounded-lg} backdrop-blur-sm`}>
+              <img src="src/assets/logo.png" alt="MyKITA Logo" className="h-10 w-10 absolute" />
             </div>
             <div className="hidden sm:block">
               <h1 className={`text-lg font-bold ${mode === 'admin' ? 'text-white' : 'text-primary-foreground'}`}>MyKITA</h1>
