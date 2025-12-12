@@ -1,13 +1,24 @@
 import { NavLink } from "@/components/NavLink";
 import { Users, MapPin, UserCircle, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mode, setMode] = useState<'admin' | 'victim'>('victim');
+  const [mode, setMode] = useState<'admin' | 'victim'>(() => {
+    if (typeof window === "undefined") return "admin";
+    return (localStorage.getItem("mykita.mode") as 'admin' | 'victim') ?? 'admin';
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("mykita.mode", mode);
+    } catch (e) {
+      // ignore storage errors
+    }
+  }, [mode]);
 
   const navItems = mode === 'admin'
     ? [
@@ -58,14 +69,14 @@ const Navbar = () => {
             ))}
             {/* Toggle Switch */}
             <div className="flex items-center gap-2 ml-4">
-              <Label htmlFor="mode-toggle" className={`text-xs ${mode === 'admin' ? 'text-white' : 'text-primary-foreground'}`}>Victim</Label>
+              <Label htmlFor="mode-toggle" className={`text-xs ${mode === 'admin' ? 'text-white font-semibold' : 'text-primary-foreground/60'}`}>Admin</Label>
               <Switch
                 id="mode-toggle"
                 checked={mode === 'admin'}
                 onCheckedChange={(checked) => setMode(checked ? 'admin' : 'victim')}
                 className={mode === 'admin' ? 'data-[state=checked]:bg-white/80' : ''}
               />
-              <Label htmlFor="mode-toggle" className={`text-xs ${mode === 'admin' ? 'text-white/60' : 'text-primary-foreground/60'}`}>Admin</Label>
+              <Label htmlFor="mode-toggle" className={`text-xs ${mode === 'admin' ? 'text-white/60' : 'text-primary-foreground font-semibold'}`}>Victim</Label>
             </div>
           </div>
 
@@ -102,14 +113,14 @@ const Navbar = () => {
               ))}
               {/* Toggle Switch for mobile */}
               <div className="flex items-center gap-2 mt-4 px-4">
-                <Label htmlFor="mode-toggle-mobile" className={`text-xs ${mode === 'admin' ? 'text-white' : 'text-primary-foreground'}`}>Admin</Label>
+                <Label htmlFor="mode-toggle-mobile" className={`text-xs ${mode === 'admin' ? 'text-white font-semibold' : 'text-primary-foreground/60'}`}>Admin</Label>
                 <Switch
                   id="mode-toggle-mobile"
                   checked={mode === 'admin'}
                   onCheckedChange={(checked) => setMode(checked ? 'admin' : 'victim')}
                   className={mode === 'admin' ? 'data-[state=checked]:bg-white/80' : ''}
                 />
-                <Label htmlFor="mode-toggle-mobile" className={`text-xs ${mode === 'admin' ? 'text-white/60' : 'text-primary-foreground/60'}`}>Victim</Label>
+                <Label htmlFor="mode-toggle-mobile" className={`text-xs ${mode === 'admin' ? 'text-white/60' : 'text-primary-foreground font-semibold'}`}>Victim</Label>
               </div>
             </div>
           </div>
