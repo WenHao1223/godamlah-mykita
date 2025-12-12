@@ -26,7 +26,7 @@ const Navbar = () => {
     } catch (e) {
       // ignore storage errors
     }
-  }, [mode]);
+  }, [mode, navigate]);
 
   const navItems = mode === 'admin'
     ? [
