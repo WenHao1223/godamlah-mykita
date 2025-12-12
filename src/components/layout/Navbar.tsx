@@ -22,7 +22,7 @@ const Navbar = () => {
               <Shield className="h-6 w-6 text-primary-foreground" />
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-lg font-bold text-primary-foreground">MY KITA</h1>
+              <h1 className="text-lg font-bold text-primary-foreground">MyKITA</h1>
               <p className="text-xs text-primary-foreground/80">
                 Sistem Kad Identiti Tindakan Awal
               </p>
