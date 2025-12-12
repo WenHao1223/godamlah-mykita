@@ -69,14 +69,13 @@ const Navbar = () => {
             ))}
             {/* Toggle Switch */}
             <div className="flex items-center gap-2 ml-4">
-              <Label htmlFor="mode-toggle" className={`text-xs ${mode === 'admin' ? 'text-white font-semibold' : 'text-primary-foreground/60'}`}>Admin</Label>
               <Switch
                 id="mode-toggle"
                 checked={mode === 'admin'}
                 onCheckedChange={(checked) => setMode(checked ? 'admin' : 'victim')}
                 className={mode === 'admin' ? 'data-[state=checked]:bg-white/80' : ''}
               />
-              <Label htmlFor="mode-toggle" className={`text-xs ${mode === 'admin' ? 'text-white/60' : 'text-primary-foreground font-semibold'}`}>Victim</Label>
+              <Label htmlFor="mode-toggle" className={`text-xs ${mode === 'admin' ? 'text-white/60' : 'text-primary-foreground font-semibold'}`}>{mode === 'admin' ? 'Admin' : 'Victim'}</Label>
             </div>
           </div>
 
